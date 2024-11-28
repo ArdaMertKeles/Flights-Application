@@ -30,6 +30,7 @@ export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate
     const [returnValue, setReturnValue] = useState()
     const [flightClassValue, setFlightClassValue] = useState('economy')
 
+    const apiKey = process.env.REACT_APP_API_KEY
     const debounceTimeoutRef = useRef(null);
     const dispatch = useDispatch()
 
@@ -53,7 +54,7 @@ export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate
                 url: 'https://sky-scrapper.p.rapidapi.com/api/v1/flights/searchAirport',
                 params: { query },
                 headers: {
-                    'x-rapidapi-key': '483edaf345msh4840343f0e02ee7p118ef3jsn95e812e5b0f4',
+                    'x-rapidapi-key': apiKey,
                     'x-rapidapi-host': 'sky-scrapper.p.rapidapi.com'
                 }
             };
@@ -111,7 +112,7 @@ export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate
                 sortBy: 'best',
             },
             headers: {
-                'x-rapidapi-key': '483edaf345msh4840343f0e02ee7p118ef3jsn95e812e5b0f4',
+                'x-rapidapi-key': apiKey,
                 'x-rapidapi-host': 'sky-scrapper.p.rapidapi.com'
             }
         };
