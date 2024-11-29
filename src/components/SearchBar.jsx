@@ -87,7 +87,7 @@ export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate
         }
 
         debounceTimeoutRef.current = setTimeout(() => {
-            searchAirport(newInputValue, setPossibles, setLoadingChecker);
+            searchAirport(newInputValue.toLowerCase(), setPossibles, setLoadingChecker);
         }, 300);
     };
 
@@ -355,7 +355,7 @@ export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate
                     }} />}
                 </LocalizationProvider>
             </div>
-            <Button onClick={searchFlights} sx={{ borderRadius: '2em' }} variant="contained" classes={{ disabled: 'disabledSearchBtn' }} disabled={searchLoading} className='searchBtn' startIcon={!searchLoading ? <SearchIcon /> : <RefreshIcon className='loadingIcon' />}>
+            <Button onClick={searchFlights} sx={{ borderRadius: '2em' }} variant="contained" classes={{ disabled: 'disabledSearchBtn' }} disabled={searchLoading || (originSkyId && destinationID && originEntityId && destinationEntityID && departureValue && returnValue && flightClassValue ? false : true)} className='searchBtn' startIcon={!searchLoading ? <SearchIcon /> : <RefreshIcon className='loadingIcon' />}>
                 Search
             </Button>
         </div>
