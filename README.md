@@ -1,5 +1,9 @@
-# Flights App Made with React.JS
+# Flights App Made with React.JS [Live Server](https://spotterflights.netlify.app/)
+I used React, SCSS and Redux Toolkit on this project
 
+![Ekran görüntüsü 2024-11-28 213008](https://github.com/user-attachments/assets/23c372f3-96d9-408f-a1fa-2ffdd1ccd096)
+
+![Ekran görüntüsü 2024-11-28 213031](https://github.com/user-attachments/assets/174b88d4-f554-4db9-a201-97bd2797ff7b)
 
 ## Available Scripts
 
