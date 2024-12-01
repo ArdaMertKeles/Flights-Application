@@ -13,7 +13,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import { useDispatch, useSelector } from "react-redux";
 import { setOriginSkyId, incrementAdults, decrementAdults, incrementChildren, decrementChildren, incrementInfants, decrementInfants, setDepartureValue, setOriginEntityId } from "../features/flightParamsChecker"
 
-export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate, setReturnDate, departureDate, setDepartureDate, setFlights }) => {
+export const SearchBar = ({ setFlightStatus, way, setWay, flightClass, setFlightClass, returnDate, setReturnDate, departureDate, setDepartureDate, setFlights }) => {
 
     // States
 
@@ -118,8 +118,9 @@ export const SearchBar = ({ way, setWay, flightClass, setFlightClass, returnDate
         };
 
         try {
-            const response = await axios.request(options);
-            setFlights(response.data.data.itineraries.slice(0, 10));
+            const {data} = await axios.request(options);
+            setFlightStatus(data.status)
+            setFlights(data?.data?.itineraries.slice(0, 10));
         } catch (error) {
             console.error(error);
         } finally {

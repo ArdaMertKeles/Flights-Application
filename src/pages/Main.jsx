@@ -11,18 +11,19 @@ export const Main = () => {
     const [departureDate, setDepartureDate] = useState()
     const [returnDate, setReturnDate] = useState()
     const [flights, setFlights] = useState()
+    const [flightStatus, setFlightStatus] = useState()
 
     return (
         <div className="wrapper">
             <Svg />
             <h1>Spotter Flights</h1>
-            <SearchBar way={way} setWay={setWay} flightClass={flightClass} setFlightClass={setFlightClass} departureDate={departureDate}
+            <SearchBar setFlightStatus={setFlightStatus} way={way} setWay={setWay} flightClass={flightClass} setFlightClass={setFlightClass} departureDate={departureDate}
                 setDepartureDate={setDepartureDate} returnDate={returnDate} setReturnDate={setReturnDate} setFlights={setFlights} />
             <div className="flightsWrapper">
                 {flights && flights.map((flight, key) => (
                     <FlightCard key={key} price={flight.price.formatted} way={way} leg={flight.legs[0]} flightClass={flightClass} />
                 ))}
-                {flights && flights.length === 0 && <div className="noFlightsFound">
+                {flightStatus === false && <div className="noFlightsFound">
                     <NoFoundSvg />
                     <p>Sorry! We couldn't find any flights.</p>
                 </div>}
