@@ -337,7 +337,6 @@ export const SearchBar = ({ setFlightStatus, way, setWay, flightClass, setFlight
                             borderColor: "lightgray"
                         }
                     }} />
-                    {/* Date picker return date bugunu fixle */}
                     {way === 'Two Way' && <DatePicker className='datePicker' disablePast minDate={departureDate} label='Return Date' format='YYYY/MM/DD' value={returnDate} onChange={(newValue) => { setReturnValue(newValue.$y + '-' + (newValue.$M + 1) + '-' + newValue.$D); setReturnDate(newValue) }} sx={{
                         width: '25%', "& .MuiOutlinedInput-root": {
                             color: "#C2C6CA",
@@ -357,7 +356,7 @@ export const SearchBar = ({ setFlightStatus, way, setWay, flightClass, setFlight
                     }} />}
                 </LocalizationProvider>
             </div>
-            <Button onClick={searchFlights} sx={{ borderRadius: '2em' }} variant="contained" classes={{ disabled: 'disabledSearchBtn' }} disabled={searchLoading || (originSkyId && destinationID && originEntityId && destinationEntityID && departureValue && returnValue && flightClassValue ? false : true)} className='searchBtn' startIcon={!searchLoading ? <SearchIcon /> : <RefreshIcon className='loadingIcon' />}>
+            <Button onClick={searchFlights} sx={{ borderRadius: '2em' }} variant="contained" classes={{ disabled: 'disabledSearchBtn' }} disabled={searchLoading || (originSkyId && destinationID && originEntityId && destinationEntityID && departureValue && returnValue && flightClassValue ? false : true) || (returnDate > departureDate ?  false : true) } className='searchBtn' startIcon={!searchLoading ? <SearchIcon /> : <RefreshIcon className='loadingIcon' />}>
                 Search
             </Button>
         </div>
